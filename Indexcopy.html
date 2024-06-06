@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Konnections</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Custom CSS linked last -->
+    <style>
+        .custom-card {
+            width: calc(155.3333% - 11rem); /* Adjust the width as needed */
+            height: 100%; /* Maintain the original height */
+        }
+        .search-results {
+            position: absolute;
+            background: #faf6f6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 0px solid #ccc;
+            width: 35%;
+            z-index: 1000;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .search-result-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        .search-result-item a {
+            color: #000;
+            text-decoration: none;
+            flex-grow: 1;
+        }
+        .search-result-item a:hover {
+            text-decoration: underline;
+        }
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+        .navbar-brand img {
+            height: 42px;
+            margin-right: 10px;
+            margin-bottom: 0.3rem;
+
+        }
+
+        .navbar-brand h1 {
+            display: inline-block;
+            margin-left: -0.8rem;
+            margin-top: 0.1rem;
+        }
+
+
+    </style>
+</head>
+<body class="home-page">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="KKsmall.jpeg" alt="Kitchen Konnections Logo">
+                    <h1>Kitchen Konnections</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div>
+                    <form class="form-inline ml-auto search-bar" onsubmit="event.preventDefault(); performSearch();">
+                        <input class="form-control mr-2" type="search" placeholder="Search... " aria-label="Search" style="width: 180px;" onkeyup="performSearch()">
+                        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item text-center">
+                            <a class="nav-link" href="Wishlist.html"><i class="fas fa-heart"></i><div class="nav-label">Wishlist</div></a>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i><div class="nav-label">Cart</div></a>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a class="nav-link" href="#about"><i class="fas fa-info-circle"></i><div class="nav-label">About</div></a>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a class="nav-link" href="#services"><i class="fas fa-concierge-bell"></i><div class="nav-label">Services</div></a>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a class="nav-link" href="#contact"><i class="fas fa-envelope"></i><div class="nav-label">Contact</div></a>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a class="nav-link" href="Login.html" id="loginLink"><i class="fas fa-user"></i><div class="nav-label">Login</div></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+<!--Welcome Section-->
+<section class="welcome-section" id="welcome-section">
+    <div class="welcome-content">
+        <h1>Kitchen Konnections - Your Portal to Homemade Treats!</h1>
+        <a href="#services" class="btn btn-primary">Discover More</a>
+    </div>
+</section><br>
+<!-- Rest of your HTML content -->
+<section id="services" class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-4" style="font-family: cursive; font-style: italic; color:rgb(74, 45, 45) ;">Taste the Sweet Side of Life</h1><br><br>
+        <div class="row">
+<!-- Service Item 1 -->
+<div class="col-lg-4 col-md-6 mb-4" id="dd" onclick="window.location.href='dd1.html';">
+    <div class="card h-100 custom-card">
+        <img src="d1.png" class="card-img-top" alt="Dessert 1"> 
+        <div class="card-body">
+            <h4 class="card-title">Decadent Desserts</h4>
+            <p class="card-text">One bite, and you'll be craving more!</p>
+        </div>
+    </div>
+</div>
+           <!-- Service Item 2 -->
+<div class="col-lg-4 col-md-6 mb-4" onclick="window.location.href='sc.html';">
+    <div class="card h-100 custom-card"> 
+        <img src="wc.png" class="card-img-top" alt="Dessert 2">
+        <div class="card-body">
+            <h4 class="card-title" onclick="window.location.href='sc.html';">Sweet Celebrations</h4>
+            <p class="card-text">Love at first bite: experience the magic of your moment with our unforgettable cakes!</p>
+        </div>
+    </div>
+</div>
+<!-- Service Item 3 -->
+<div class="col-lg-4 col-md-6 mb-4" onclick="window.location.href='gg.html';">
+    <div class="card h-100 custom-card"> 
+        <img src="bl.png" class="card-img-top" alt="Dessert 3">
+        <div class="card-body">
+            <h4 class="card-title" onclick="window.location.href='gg.html';">Guilt-Free Goodies</h4>
+            <p class="card-text">Satisfy every craving guilt-free with our range of gluten-free, egg-free, fat-free, & other dietary-conscious delights!</p>
+        </div>
+    </div>
+</div>
+
+<!-- Service Item 4 -->
+<div class="col-lg-4 col-md-6 mb-4" onclick="window.location.href='cupcakes.html';">
+    <div class="card h-100 custom-card"> 
+        <img src="kiwi-cupcakes-3-scaled.jpeg" class="card-img-top" alt="Dessert 3">
+        <div class="card-body">
+            <h4 class="card-title" onclick="window.location.href='cupcakes.html';">Cupcake Craze</h4>
+            <p class="card-text">Dive into our irresistible cupcakes, filled with delectable flavors and topped with love!</p>
+        </div>
+    </div>
+</div>
+
+<!-- Service Item 5 -->
+<div class="col-lg-4 col-md-6 mb-4" onclick="window.location.href='cookies.html';">
+    <div class="card h-100 custom-card">
+        <img src="cookies.jpeg" class="card-img-top" alt="Dessert 3">
+        <div class="card-body">
+            <h4 class="card-title" onclick="window.location.href='cookies.html';">Cookie Cravings</h4>
+            <p class="card-text">Satisfy your sweet tooth with our scrumptious cookies!</p>
+        </div>
+    </div>
+</div>
+<!-- Service Item 6 -->
+<div class="col-lg-4 col-md-6 mb-4" onclick="window.location.href='Custom.html';">
+    <div class="card h-100 custom-card"> 
+        <img src="21.jpeg" class="card-img-top" alt="Dessert 3">
+        <div class="card-body">
+            <h4 class="card-title" onclick="window.location.href='Custom.html';">Custom Creations</h4>
+            <p class="card-text">Your Imagination, Our Creation!</p>
+        </div>
+    </div>
+</div>
+ <!-- Add more service items as needed -->
+        </div>
+    </div>
+</section><br><br>
+
+
+<!-- Features Section -->
+<div id="features" class="container my-5">
+    <h1 class="section-title">Features</h1><br>
+    <div class="row text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card feature-card">
+                <div class="card-body">
+                    <i class="fas fa-heart feature-icon"></i>
+                    <h5 class="card-title">Homemade with Love</h5>
+                    <p class="card-text">Our desserts are made with the finest ingredients and a lot of love, ensuring you get the best quality every time.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card feature-card">
+                <div class="card-body">
+                    <i class="fas fa-apple-alt feature-icon"></i>
+                    <h5 class="card-title">Healthier Choices</h5>
+                    <p class="card-text">We prioritize your health by using natural and organic ingredients, offering a healthier alternative to commercial sweets.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card feature-card">
+                <div class="card-body">
+                    <i class="fas fa-smile feature-icon"></i>
+                    <h5 class="card-title">Customer Satisfaction</h5>
+                    <p class="card-text">Your happiness is our priority. We ensure every treat you receive brings a smile to your face.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card feature-card">
+                <div class="card-body">
+                    <i class="fas fa-user feature-icon"></i>
+                    <h5 class="card-title">Your Own Baking Profile</h5>
+                    <p class="card-text">A cozy corner of the internet for you to share your baking skills, recipes, and connect with other bakers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About Section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-4" style="font-family: cursive;">About us</h1><br><br>
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <img src="KKsmall.jpeg" class="img-fluid" alt="About Us Image">
+            </div>
+            <div class="col-lg-6 mb-4">
+                <h2>Savor the Flavors of Kitchen Konnections</h2>
+                <p>At Kitchen Konnections, we believe in the power of homemade treats to bring joy and warmth to every occasion. Our platform connects passionate bakers with dessert enthusiasts, creating a community where sweet creations are shared and celebrated.</p>
+                <p>Whether you're looking to indulge in decadent desserts, celebrate with a custom cake, or explore guilt-free goodies, Kitchen Konnections has something for everyone. Join us on this delicious journey and experience the magic of homemade treats.</p>
+                <a href="#contact" class="btn btn-primary">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5 bg-light">
+    <div class="container">
+        <h1 class="text-center mb-4" style="font-family: cursive;">Contact Us</h1>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" rows="5" placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

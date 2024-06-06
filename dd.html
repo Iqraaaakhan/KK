@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decadent Desserts</title>
+    <link rel="stylesheet" href="dd.css">
+</head>
+<body>
+    <header>
+        Decadent Desserts
+    </header>
+
+    <section id="desserts">
+        <div class="container" id="dessert-container">
+            <!-- Desserts will be dynamically added here -->
+        </div>
+    </section>
+‹
+    <footer>
+        &copy; 2024 Kitchen Konnections
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script>
+        // Your Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyASdpzVlA0EpIQcl0dY4u0O8Qu690Yz5Rk",
+            authDomain: "kitchen-konnections-iqra.firebaseapp.com",
+            databaseURL: "https://kitchen-konnections-iqra-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "kitchen-konnections-iqra",
+            storageBucket: "kitchen-konnections-iqra.appspot.com",
+            messagingSenderId: "504936969546",
+            appId: "1:504936969546:web:514a861339bc803de3bdb3",
+            measurementId: "G-YMS70Q576L"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        
+        // Get a reference to the Firestore database
+        var db = firebase.firestore();
+
+        // Function to fetch dessert data from Firestore
+        function fetchDesserts() {
+            var dessertContainer = document.getElementById("dessert-container");
+
+            // Query the desserts collection
+            db.collection("1").get().then(function(querySnapshot) {
+                if (querySnapshot.empty) {
+                    dessertContainer.innerHTML = "<p>No desserts found.</p>";
+                    return;
+                }
+                querySnapshot.forEach(function(doc) {
+                    var dessertData = doc.data();
+                    var dessertCard = document.createElement("div");
+                    dessertCard.classList.add("dessert-card");
+                    dessertCard.innerHTML = `
+                        <img src="${"pom.jpeg"}" alt="${dessertData.name}">
+                        <h3>${dessertData.title}</h3>
+                        <p>From ${dessertData.sellerId}</p>
+                        <p>Price: ${dessertData.price}</p>
+                        <p>${dessertData.price}</p>
+                    `;
+                    dessertContainer.appendChild(dessertCard);
+                });
+            }).catch(function(error) {
+                dessertContainer.innerHTML = "<p>Error loading desserts. Please try again later.</p>";
+            });
+        }
+
+        // Call the fetchDesserts function when the page loads
+        window.onload = fetchDesserts;
+    </script>
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Creations</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Custom CSS linked last -->
+
+    <style>
+        /* Custom Styles for Custom Creations */
+        h2 {
+            font-style: italic;
+            color: #54332d;
+            font-family: cursive;
+            text-align: center;
+            margin: 0;
+        }
+
+        body {
+            background: linear-gradient(rgba(239, 232, 232, 0.5), rgba(246, 242, 242, 0.5)),
+                url('custom_creations_bg.jpg') center/cover no-repeat;
+        }
+
+        .product-img {
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .product-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 8px 16px rgba(13, 13, 13, 0.2), 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .product-seller {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            color: #6e4840;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            color: #ffc107;
+        }
+
+        .btn-view-details, .btn-add-to-wishlist {
+            background-color: #6e4840;
+            border: none;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-add-to-cart {
+            background-color: #6e4840;
+            border: none;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            width: 15rem;
+        }
+
+        .btn-view-details:hover, .btn-add-to-cart:hover, .btn-add-to-wishlist:hover {
+            background-color: #ffb6c1;
+            color: #6e4840;
+        }
+
+        /* Additional Styles */
+        .container {
+            padding-top: 3rem; /* Add some top padding */
+        }
+
+        .navbar-brand {
+            font-size: 2rem; /* Increase font size for brand */
+            font-style: italic;
+            color: #382521;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .product-img {
+                height: 400px; /* Adjust image height for smaller screens */
+            }
+            .product-title {
+                font-size: 1.2rem; /* Adjust font size for product title */
+            }
+            .product-price {
+                font-size: 1rem; /* Adjust font size for product price */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .col-sm-12 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+
+        body {
+            background: linear-gradient(rgba(239, 232, 232, 0.5), rgba(246, 242, 242, 0.5)),
+                url('van.png') center/cover no-repeat;
+        }
+
+        #notification {
+            display: none;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 1000;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Notification Container -->
+    <div id="notification-container">
+        <div id="notification">Item added to cart!</div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container d-flex justify-content-center">
+            <h2>Custom Creations - Your Imagination, Our Creation!</h2>
+        </div>
+    </nav>
+
+    <!-- Product Showcase -->
+    <div class="container">
+        <div class="row">
+<!-- Product Showcase -->
+<div class="container">
+    <div class="row">
+        <!-- Product Item 1: Checkmate Cake -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="checkmate-cake">
+            <div class="card h-100 product-card">
+                <img src="https://i.pinimg.com/564x/89/bc/1c/89bc1ccdb5be27408af69c1ab75b9ba1.jpg" class="card-img-top product-img" alt="Checkmate Cake">
+                <div class="card-body product-details">
+                    <h5 class="card-title product-title">Checkmate Cake</h5>
+                    <p class="card-text product-seller">Seller: Dreamy Bakes</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="card-text product-price">₹1500</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-1">4.5</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-to-wishlist" data-id="checkmate-cake" data-name="Checkmate Cake" data-price="1500" data-image="https://i.pinimg.com/564x/89/bc/1c/89bc1ccdb5be27408af69c1ab75b9ba1.jpg"><i class="fas fa-heart"></i></button>
+                    <button class="btn btn-add-to-cart" data-id="checkmate-cake" data-name="Checkmate Cake" data-price="1500" data-image="https://i.pinimg.com/564x/89/bc/1c/89bc1ccdb5be27408af69c1ab75b9ba1.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Product Item 2: Cricket Fever Cupcake -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="cricket-fever-cupcake">
+            <div class="card h-100 product-card">
+                <img src="https://i.pinimg.com/564x/6f/0f/6a/6f0f6a785f5b595fb8296824c6c089c0.jpg" class="card-img-top product-img" alt="Cricket Fever Cupcake">
+                <div class="card-body product-details">
+                    <h5 class="card-title product-title">Cricket Fever Cupcakes</h5>
+                    <p class="card-text product-seller">Seller: Cricket Sweets</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="card-text product-price">₹500</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="ml-1">5.0</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-to-wishlist" data-id="cricket-fever-cupcake" data-name="Cricket Fever Cupcakes" data-price="500" data-image="https://i.pinimg.com/564x/6f/0f/6a/6f0f6a785f5b595fb8296824c6c089c0.jpg"><i class="fas fa-heart"></i></button>
+                    <button class="btn btn-add-to-cart" data-id="cricket-fever-cupcake" data-name="Cricket Fever Cupcakes" data-price="500" data-image="https://i.pinimg.com/564x/6f/0f/6a/6f0f6a785f5b595fb8296824c6c089c0.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Product Item 3: Bibliophile Bites -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="bibliophile-bites">
+            <div class="card h-100 product-card">
+                <img src="https://i.pinimg.com/564x/6e/34/d0/6e34d0d759e35f102f4b79cb7ff1dfee.jpg" class="card-img-top product-img" alt="Bibliophile Bites">
+                <div class="card-body product-details">
+                    <h5 class="card-title product-title">Bibliophile Bites</h5>
+                    <p class="card-text product-seller">Seller: Bookworm Delights</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="card-text product-price">₹2000</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-1">4.5</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-to-wishlist" data-id="bibliophile-bites" data-name="Bibliophile Bites" data-price="2000" data-image="https://i.pinimg.com/564x/6e/34/d0/6e34d0d759e35f102f4b79cb7ff1dfee.jpg"><i class="fas fa-heart"></i></button>
+                    <button class="btn btn-add-to-cart" data-id="bibliophile-bites" data-name="Bibliophile Bites" data-price="2000" data-image="https://i.pinimg.com/564x/6e/34/d0/6e34d0d759e35f102f4b79cb7ff1dfee.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Product Item 4: Hala Madrid -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="hala-madrid">
+            <div class="card h-100 product-card">
+                <img src="mfc.jpeg" class="card-img-top product-img" alt="Hala Madrid">
+                <div class="card-body product-details">
+                    <h5 class="card-title product-title">Hala Madrid</h5>
+                    <p class="card-text product-seller">Seller: Football Fanatics</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="card-text product-price">₹4000</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-1">4.5</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-to-wishlist" data-id="hala-madrid" data-name="Hala Madrid" data-price="4000" data-image="mfc.jpeg"><i class="fas fa-heart"></i></button>
+                    <button class="btn btn-add-to-cart" data-id="hala-madrid" data-name="Hala Madrid" data-price="4000" data-image="mfc.jpeg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Product Item 5: Badminton Ace Cake -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="badminton-ace-cake">
+            <div class="card h-100 product-card">
+                <img src="bad.jpeg" class="card-img-top product-img" alt="Badminton Ace Cake">
+                <div class="card-body product-details">
+                    <h5 class="card-title product-title">Badminton Ace Cake</h5>
+                    <p class="card-text product-seller">Seller: Sports Sweets</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="card-text product-price">₹3700</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-1">4.7</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-to-wishlist" data-id="badminton-ace-cake" data-name="Badminton Ace Cake" data-price="3700" data-image="bad.jpeg"><i class="fas fa-heart"></i></button>
+                    <button class="btn btn-add-to-cart" data-id="badminton-ace-cake" data-name="Badminton Ace Cake" data-price="3700" data-image="bad.jpeg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Product Item 6: Gym Buff Cake -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="gym-buff-cake">
+            <div class="card h-100 product-card">
+                <img src="gym.jpeg" class="card-img-top product-img" alt="Gym Buff Cake">
+                <div class="card-body product-details">
+                    <h5 class="card-title product-title">Gym Buff Cake</h5>
+                    <p class="card-text product-seller">Seller: Fitness Bakes</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="card-text product-price">₹4500</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-1">4.5</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-to-wishlist" data-id="gym-buff-cake" data-name="Gym Buff Cake" data-price="4500" data-image="gym.jpeg"><i class="fas fa-heart"></i></button>
+                    <button class="btn btn-add-to-cart" data-id="gym-buff-cake" data-name="Gym Buff Cake" data-price="4500" data-image="gym.jpeg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Product Item 7: Wanderlust Cake -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="wanderlust-cake">
+            <div class="card h-100 product-card">
+                <img src="trav.jpeg" class="card-img-top product-img" alt="Wanderlust Cake">
+                <div class="card-body product-details">
+                    <h5 class="card-title product-title">Wanderlust Cake</h5>
+                    <p class="card-text product-seller">Seller: Globe Trotter Bakes</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="card-text product-price">₹5200</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-1">4.7</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-to-wishlist" data-id="wanderlust-cake" data-name="Wanderlust Cake" data-price="5200" data-image="trav.jpeg"><i class="fas fa-heart"></i></button>
+                    <button class="btn btn-add-to-cart" data-id="wanderlust-cake" data-name="Wanderlust Cake" data-price="5200" data-image="trav.jpeg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Product Item 8: Coding Cookies -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="coding-cookies">
+            <div class="card h-100 product-card">
+                <img src="pycookie.jpeg" class="card-img-top product-img" alt="Coding Cookies">
+                <div class="card-body product-details">
+                    <h5 class="card-title product-title">Coding Cookies</h5>
+                    <p class="card-text product-seller">Seller: Geeky Treats</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="card-text product-price">₹1500</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-1">4.5</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-to-wishlist" data-id="coding-cookies" data-name="Coding Cookies" data-price="1500" data-image="pycookie.jpeg"><i class="fas fa-heart"></i></button>
+                    <button class="btn btn-add-to-cart" data-id="coding-cookies" data-name="Coding Cookies" data-price="1500" data-image="pycookie.jpeg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Product Item 9: Tea Time Treats -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="tea-time-treats">
+            <div class="card h-100 product-card">
+                <img src="tea.jpeg" class="card-img-top product-img" alt="Tea Time Treats">
+                <div class="card-body product-details">
+                    <h5 class="card-title product-title">Tea Time Treats</h5>
+                    <p class="card-text product-seller">Seller: Tea Delight</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="card-text product-price">₹700</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-1">4.6</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-to-wishlist" data-id="tea-time-treats" data-name="Tea Time Treats" data-price="700" data-image="tea.jpeg"><i class="fas fa-heart"></i></button>
+                    <button class="btn btn-add-to-cart" data-id="tea-time-treats" data-name="Tea Time Treats" data-price="700" data-image="tea.jpeg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const notification = document.getElementById('notification');
+        
+        // Function to display notification
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 2000); // Hide the notification after 2 seconds
+        }
+
+        function addToCart(productId, productName, productPrice, productImage) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const product = { id: productId, name: productName, price: productPrice, image: productImage };
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            showNotification(`${productName} added to cart!`);
+        }
+
+        function addToWishlist(productId, productName, productPrice, productImage) {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const product = { id: productId, name: productName, price: productPrice, image: productImage };
+            wishlist.push(product);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            showNotification(`${productName} added to wishlist!`);
+        }
+
+        document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.stopPropagation();
+                const productId = this.getAttribute('data-id');
+                const productName = this.getAttribute('data-name');
+                const productPrice = parseFloat(this.getAttribute('data-price'));
+                const productImage = this.getAttribute('data-image');
+                addToCart(productId, productName, productPrice, productImage);
+            });
+        });
+
+        document.querySelectorAll('.btn-add-to-wishlist').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.stopPropagation();
+                const productId = this.getAttribute('data-id');
+                const productName = this.getAttribute('data-name');
+                const productPrice = parseFloat(this.getAttribute('data-price'));
+                const productImage = this.getAttribute('data-image');
+                addToWishlist(productId, productName, productPrice, productImage);
+            });
+        });
+    });
+</script>
+
+<script src="script.js"></script>
+
+<!-- Bootstrap and jQuery Scripts-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

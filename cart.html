@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            height: 150rem;
+            background: linear-gradient(#efe8e880, rgba(246, 242, 242, 0.5)), 
+                url('van.png') center/cover no-repeat;
+        }
+        .cart-container {
+            padding: 2rem;
+            border: 0.rem solid rgb(182, 151, 151);
+            border-radius: 0%;
+            width: 100%;
+            height: 100%;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 2px solid #ccc;
+        }
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+        .cart-item-details {
+            flex-grow: 1;
+            margin-left: 1rem;
+        }
+        .cart-item-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .cart-item-price {
+            color: #6e4840;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .btn-remove {
+            background-color: #9e5e52;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            
+        }
+        .btn-remove:hover {
+            background-color: #eeafbc;
+            border-color: #2e1713;
+        }
+        #cart-total {
+            font-size: 1.5rem;
+            text-align: right;
+            margin-top: 2rem;
+        }
+       
+        
+        /* Updated CSS for badge positioning */
+        .badge {
+    font-size: 1.5rem;
+    border-radius: 50%;
+    padding: 4px 8px;
+    background-color: #9e5e52;
+    color: white;
+    position: absolute;
+    margin-top: 0.5rem;
+    margin-left: -0.1rem;
+    transform: translate(50%, -50%);
+}
+
+        /* Custom styling for buttons */
+        .btn-continue-shopping{ 
+            width: 100%;
+            margin-top: 1rem;
+            background-color:#9e5e52;
+            border-color: #9e5e52;
+        }
+        .btn-continue-shopping:hover{
+            background-color: #eeafbc;
+            border-color: #9e5e52;
+
+        }
+        #proceed-to-checkout {
+            width: 100%;
+            margin-top: 1rem;
+            background-color: #feedf6;
+            color: #000;
+            border-color: #000;
+        }
+        #proceed-to-checkout:hover{
+            background-color: #eeafbc;
+        }
+        @media (min-width: 576px) {
+            .btn-continue-shopping,
+            #proceed-to-checkout {
+                width: auto;
+                margin-top: 0;
+            }
+            .cart-container {
+                margin-left: 2rem; /* Move the container to the right */
+            }
+            #logo {
+                margin-left: 0; /* Remove left margin for logo */
+            }
+            #title {
+                margin-left: 1rem; /* Adjust title margin */
+            }
+            #cart {
+                margin-right: -0.7rem; /* Adjust cart icon margin */
+                font-size: 2.5rem;
+                color: #391818;
+                margin-left: 0.4rem;
+            }
+        }
+        /* Ensure remove buttons stay within the container */
+        @media (max-width: 575px) {
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .btn-remove {
+                margin-top: 1rem;
+            }
+        }
+        #logo{
+            margin-left: 2rem;
+            width: 5rem;
+            height: 4rem;
+            margin-bottom: 0.5rem;
+        }
+        #title{
+            margin-left: 0.3rem;
+            color: rgb(56, 15, 24);
+            font-weight: bold;
+            font-size: 2rem;
+        }
+        h1{
+            margin-bottom: 1.1rem;
+        }
+        #cart-part{
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 90rem;">
+        <a class="navbar-brand" href="#">
+            <img src="KKsmall.jpeg" alt="Your Brand Logo" id="logo">
+            <span class="navbar-text" id="title">Kitchen Konnections</span>
+        </a>
+    </nav>
+    
+    <div class="container cart-container">
+        <!-- Move the badge outside of the h1 tag -->
+        <h1 style="color: rgb(56, 15, 24); font-family: cursive" >Cart of Cravings</h1><div id="cart-part">
+        <i class="fas fa-shopping-cart" id="cart"><span class="cart-icon"></span></i>
+        <span class="badge" id="cart-item-count" style="font-family: 'Times New Roman', Times, serif; ">0</span></div>
+        
+        <!-- Your existing cart items, total, and buttons -->
+        <div id="cart-items"></div>
+        <div id="cart-total"></div>
+        <a href="checkout.html" class="btn btn-primary btn-continue-shopping">Continue Shopping</a>
+        <button id="proceed-to-checkout" class="btn btn-success">Proceed to Checkout</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const cartItemCount = document.getElementById('cart-item-count');
+            const proceedToCheckoutBtn = document.getElementById('proceed-to-checkout');
+
+            // Function to update the count of unique items in the cart
+            function updateCartItemCount() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const uniqueItemIds = new Set(cart.map(item => item.id)); // Use a Set to store unique IDs
+                cartItemCount.textContent = uniqueItemIds.size || 0; // Display the size of the Set (number of unique items) or 0 if empty
+            }
+
+            // Function to load the cart
+            function loadCart() {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cartItemsContainer.innerHTML = '';
+                let total = 0;
+
+                cart.forEach(product => {
+                    // Check if the product has all required properties
+                    if (product.id && product.name && product.price && product.image) {
+                        const item = document.createElement('div');
+                        item.classList.add('cart-item');
+                        item.innerHTML = `
+                            <img src="${product.image}" alt="${product.name}">
+                            <div class="cart-item-details">
+                                <h5 class="cart-item-title">${product.name}</h5>
+                                <p class="cart-item-price">₹${product.price}</p>
+                                <input type="number" class="quantity-selector" id="quantity-${product.id}" value="${product.quantity || 1}" min="1">
+                            </div>
+                            <button class="btn btn-remove" data-id="${product.id}">Remove</button>`;
+                        cartItemsContainer.appendChild(item);
+                        total += product.price * (product.quantity || 1);
+                    }
+                });
+
+                cartTotal.textContent = `Total: ₹${total}`;
+
+                // Add event listeners to remove buttons
+                document.querySelectorAll('.btn-remove').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const productId = this.getAttribute('data-id');
+                        removeFromCart(productId);
+                    });
+                });
+
+                // Add event listeners to quantity selectors
+                document.querySelectorAll('.quantity-selector').forEach(selector => {
+                    selector.addEventListener('change', function () {
+                        const productId = this.getAttribute('id').replace('quantity-', '');
+                        const newQuantity = parseInt(this.value);
+                        updateCartItemQuantity(productId, newQuantity);
+                    });
+                });
+
+                // Update the cart item count
+                updateCartItemCount();
+            }
+
+            // Function to remove item from cart
+            function removeFromCart(productId) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                // Filter out the product with the specified ID
+                cart = cart.filter(product => product.id !== productId);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                loadCart();
+            }
+
+            // Function to update item quantity in the cart
+            function updateCartItemQuantity(productId, newQuantity) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                // Find the product with the specified ID
+                const productIndex = cart.findIndex(product => product.id === productId);
+                if (productIndex !== -1) {
+                    cart[productIndex].quantity = newQuantity;
+                    localStorage.setItem('cart', JSON.stringify(cart
+                    ));
+                    loadCart();
+                }
+            }
+
+            // Load the cart when the page is loaded
+            loadCart();
+
+            // Proceed to checkout button click event
+            proceedToCheckoutBtn.addEventListener('click', function () {
+                // Redirect to the checkout page
+                window.location.href = 'checkout.html'; // Change 'checkout.html' to your actual checkout page URL
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
+

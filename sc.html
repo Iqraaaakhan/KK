@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Celebrations</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Custom CSS linked last -->
+
+
+    <style>
+        /* Custom Styles for Sweet Celebrations */
+        h2 {
+            font-style: italic;
+            color: #54332d;
+            font-family: cursive;
+            text-align: center;
+            margin: 0;
+        }
+
+        body {
+            background: linear-gradient(rgba(239, 232, 232, 0.5), rgba(246, 242, 242, 0.5)),
+                url('celebration_bg.jpg') center/cover no-repeat;
+        }
+
+        .product-img {
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .product-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 8px 16px rgba(13, 13, 13, 0.2), 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .product-seller {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            color: #6e4840;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            color: #ffc107;
+        }
+
+        .btn-view-details, .btn-add-to-wishlist {
+            background-color: #6e4840;
+            border: none;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-add-to-cart {
+            background-color: #6e4840;
+            border: none;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            width: 15rem;
+        }
+
+        .btn-view-details:hover, .btn-add-to-cart:hover, .btn-add-to-wishlist:hover {
+            background-color: #ffb6c1;
+            color: #6e4840;
+        }
+
+        /* Additional Styles */
+        .container {
+            padding-top: 3rem; /* Add some top padding */
+        }
+
+        .navbar-brand {
+            font-size: 2rem; /* Increase font size for brand */
+            font-style: italic;
+            color: #382521;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .product-img {
+                height: 400px; /* Adjust image height for smaller screens */
+            }
+            .product-title {
+                font-size: 1.2rem; /* Adjust font size for product title */
+            }
+            .product-price {
+                font-size: 1rem; /* Adjust font size for product price */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .col-sm-12 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+        body{
+            background: linear-gradient(rgba(239, 232, 232, 0.5), rgba(246, 242, 242, 0.5)), 
+                url('van.png') center/cover no-repeat;
+            }
+    #notification {
+    display: none;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1000;
+    background: #fff;
+}
+            
+    </style>
+</head>
+<body>
+    <!-- Notification Container -->
+<div id="notification-container">
+    <div id="notification">Item added to cart!</div>
+</div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container d-flex justify-content-center">
+            <h2>Sweet Celebrations - Make Every Moment Special!</h2>
+        </div>
+    </nav>
+
+    <!-- Product Showcase -->
+    <div class="container">
+        <div class="row">
+            <!-- Product Item 1 -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="wedding-cake">
+                <div class="card h-100 product-card">
+                    <img src="https://i.pinimg.com/564x/ac/1d/55/ac1d55b2dde5cfa1a2077ebc834422be.jpg" class="card-img-top product-img" alt="Wedding Cake">
+                    <div class="card-body product-details">
+                        <h5 class="card-title product-title">Wedding Cake</h5>
+                        <p class="card-text product-seller">Seller: Dreamy Bites</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="card-text product-price">₹5000</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="ml-1">4.8</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-add-to-wishlist" data-id="wedding-cake" data-name="Wedding Cake" data-price="5000" data-image="https://i.pinimg.com/564x/ac/1d/55/ac1d55b2dde5cfa1a2077ebc834422be.jpg"><i class="fas fa-heart"></i></button>
+                        <button class="btn btn-add-to-cart" data-id="wedding-cake" data-name="Wedding Cake" data-price="5000" data-image="https://i.pinimg.com/564x/ac/1d/55/ac1d55b2dde5cfa1a2077ebc834422be.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product Item 2 -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="birthday-cake">
+                <div class="card h-100 product-card">
+                    <img src="https://i.pinimg.com/474x/2d/d7/bf/2dd7bfd369176287dd945300ced89915.jpg" class="card-img-top product-img" alt="Birthday Cake">
+                    <div class="card-body product-details">
+                        <h5 class="card-title product-title">Birthday Cake</h5>
+                        <p class="card-text product-seller">Seller: Albatross</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="card-text product-price">₹1500</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="ml-1">4.6</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-add-to-wishlist" data-id="birthday-cake" data-name="Birthday Cake" data-price="1500" data-image="https://i.pinimg.com/474x/2d/d7/bf/2dd7bfd369176287dd945300ced89915.jpg"><i class="fas fa-heart"></i></button>
+                        <button class="btn btn-add-to-cart" data-id="birthday-cake" data-name="Birthday Cake" data-price="1500" data-image="https://i.pinimg.com/474x/2d/d7/bf/2dd7bfd369176287dd945300ced89915.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product Item 3 -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="anniversary-cake">
+    <div class="card h-100 product-card">
+        <img src="https://i.pinimg.com/564x/a7/66/58/a7665882b0dbfff3d8347bc15220eb42.jpg" class="card-img-top product-img" alt="Anniversary Cake">
+        <div class="card-body product-details">
+            <h5 class="card-title product-title">Anniversary Cake</h5>
+            <p class="card-text product-seller">Seller: Delicious by Sujata</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text product-price">₹2000</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span class="ml-1">4.2</span>
+                </div>
+            </div>
+            <button class="btn btn-add-to-wishlist" data-id="anniversary-cake" data-name="Anniversary Cake" data-price="2000" data-image="https://i.pinimg.com/564x/a7/66/58/a7665882b0dbfff3d8347bc15220eb42.jpg"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-add-to-cart" data-id="anniversary-cake" data-name="Anniversary Cake" data-price="2000" data-image="https://i.pinimg.com/564x/a7/66/58/a7665882b0dbfff3d8347bc15220eb42.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+</div>
+<!-- Product Item 4 -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="graduation-celebration">
+    <div class="card h-100 product-card">
+        <img src="https://i.pinimg.com/564x/69/06/a2/6906a28844480ef28c98bf3adea08c4e.jpg" class="card-img-top product-img" alt="Cupcakes">
+        <div class="card-body product-details">
+            <h5 class="card-title product-title">Graduation Celebration</h5>
+            <p class="card-text product-seller">Seller: Sweet Treats</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text product-price">₹700</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span class="ml-1">4.5</span>
+                </div>
+            </div>
+            <button class="btn btn-add-to-wishlist" data-id="graduation-celebration" data-name="Graduation Celebration" data-price="700" data-image="https://i.pinimg.com/564x/69/06/a2/6906a28844480ef28c98bf3adea08c4e.jpg"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-add-to-cart" data-id="graduation-celebration" data-name="Graduation Celebration" data-price="700" data-image="https://i.pinimg.com/564x/69/06/a2/6906a28844480ef28c98bf3adea08c4e.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+</div>
+<!-- Product Item 5 -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="ff">
+    <div class="card h-100 product-card">
+        <img src="https://bakenshake.in/web_components/images/product_images/477_sml.jpg" class="card-img-top product-img" alt="Cakes">
+        <div class="card-body product-details">
+            <h5 class="card-title product-title">Friendship Fever</h5>
+            <p class="card-text product-seller">Seller: Parisian Delights</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text product-price">₹600</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span class="ml-1">4.0</span>
+                </div>
+            </div>
+            <button class="btn btn-add-to-wishlist" data-id="ff" data-name="Friendship Fever" data-price="600" data-image="https://bakenshake.in/web_components/images/product_images/477_sml.jpg"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-add-to-cart" data-id="ff" data-name="Friendship Fever" data-price="600" data-image="https://bakenshake.in/web_components/images/product_images/477_sml.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+</div>
+<!-- Product Item 6 -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="custom-pastries">
+    <div class="card h-100 product-card">
+        <img src="https://i.pinimg.com/564x/1f/90/fe/1f90fe4faad19261c2c67dab5d4059de.jpg" class="card-img-top product-img" alt="Pastries">
+        <div class="card-body product-details">
+            <h5 class="card-title product-title">Custom Pastries</h5>
+            <p class="card-text product-seller">Seller: Pastries' Corner</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text product-price">₹650</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span class="ml-1">4.1</span>
+                </div>
+            </div>
+            <button class="btn btn-add-to-wishlist" data-id="custom-pastries" data-name="Custom Pastries" data-price="650" data-image="https://i.pinimg.com/564x/1f/90/fe/1f90fe4faad19261c2c67dab5d4059de.jpg"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-add-to-cart" data-id="custom-pastries" data-name="Custom Pastries" data-price="650" data-image="https://i.pinimg.com/564x/1f/90/fe/1f90fe4faad19261c2c67dab5d4059de.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+ <!-- Product Item 7 -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="celebration-cake">
+    <div class="card h-100 product-card">
+        <img src="https://i.pinimg.com/564x/a6/75/7b/a6757b8b2b4e970184cb4ea1d101d5ef.jpg" class="card-img-top product-img" alt="Celebration Cake">
+        <div class="card-body product-details">
+            <h5 class="card-title product-title">Celebration Cake</h5>
+            <p class="card-text product-seller">Seller: Delightful Desserts</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text product-price">₹2500</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span class="ml-1">4.3</span>
+                </div>
+            </div>
+            <button class="btn btn-add-to-wishlist" data-id="celebration-cake" data-name="Celebration Cake" data-price="2500" data-image="https://i.pinimg.com/564x/a6/75/7b/a6757b8b2b4e970184cb4ea1d101d5ef.jpg"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-add-to-cart" data-id="celebration-cake" data-name="Celebration Cake" data-price="2500" data-image="https://i.pinimg.com/564x/a6/75/7b/a6757b8b2b4e970184cb4ea1d101d5ef.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+</div>
+<!-- Product Item 8 -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="siblings-special">
+    <div class="card h-100 product-card">
+        <img src="sis.jpeg" class="card-img-top product-img" alt="Special Cupcakes">
+        <div class="card-body product-details">
+            <h5 class="card-title product-title">Siblings' Special</h5>
+            <p class="card-text product-seller">Seller: Sweet Tooth</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text product-price">₹850</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span class="ml-1">4.4</span>
+                </div>
+            </div>
+            <button class="btn btn-add-to-wishlist" data-id="siblings-special" data-name="Siblings' Special" data-price="850" data-image="sis.jpeg"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-add-to-cart" data-id="siblings-special" data-name="Siblings' Special" data-price="850" data-image="sis.jpeg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+</div>
+<!-- Product Item 9 -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="event-pastries">
+    <div class="card h-100 product-card">
+        <img src="cyl 3.jpeg" class="card-img-top product-img" alt="Event Pastries">
+        <div class="card-body product-details">
+            <h5 class="card-title product-title">Event Pastries</h5>
+            <p class="card-text product-seller">Seller: Blissful Bakes</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text product-price">₹700</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span class="ml-1">4.5</span>
+                </div>
+            </div>
+            <button class="btn btn-add-to-wishlist" data-id="event-pastries" data-name="Event Pastries" data-price="700" data-image="cyl 3.jpeg"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-add-to-cart" data-id="event-pastries" data-name="Event Pastries" data-price="700" data-image="cyl 3.jpeg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const notification = document.getElementById('notification');
+            
+            // Function to display notification
+            function showNotification(message) {
+                notification.textContent = message;
+                notification.style.display = 'block';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 2000); // Hide the notification after 2 seconds
+            }
+    
+            function addToCart(productId, productName, productPrice, productImage) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const product = { id: productId, name: productName, price: productPrice, image: productImage };
+                cart.push(product);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                showNotification(`${productName} added to cart!`);
+            }
+    
+            function addToWishlist(productId, productName, productPrice, productImage) {
+                let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+                const product = { id: productId, name: productName, price: productPrice, image: productImage };
+                wishlist.push(product);
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                showNotification(`${productName} added to wishlist!`);
+            }
+    
+            document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+                button.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    const productId = this.getAttribute('data-id');
+                    const productName = this.getAttribute('data-name');
+                    const productPrice = parseFloat(this.getAttribute('data-price'));
+                    const productImage = this.getAttribute('data-image');
+                    addToCart(productId, productName, productPrice, productImage);
+                });
+            });
+    
+            document.querySelectorAll('.btn-add-to-wishlist').forEach(button => {
+                button.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    const productId = this.getAttribute('data-id');
+                    const productName = this.getAttribute('data-name');
+                    const productPrice = parseFloat(this.getAttribute('data-price'));
+                    const productImage = this.getAttribute('data-image');
+                    addToWishlist(productId, productName, productPrice, productImage);
+                });
+            });
+        });
+    </script>
+            <script src="script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

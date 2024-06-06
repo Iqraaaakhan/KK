@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Kitchen Konnections</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: rgb(252, 243, 247);
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 650px;
+            background-color: rgb(248, 248, 235);
+            padding: 50px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid #000001;
+            border-radius: 0px;
+        }
+        h2 {
+            color: #020008;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+            color: #020008;
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #6e4840;
+        }
+        button {
+            color: #f2f4f9;
+            background-color: #4489e4;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #afc1ec;
+        }
+        p {
+            margin-top: 20px;
+            color: #000206;
+            font-size: 16px;
+        }
+        a {
+            color: #4375ea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #3a251c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <h2>Sign Up for Kitchen Konnections</h2>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" class="form-control" required placeholder="Enter your full name" autocomplete="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" class="form-control" required placeholder="Enter your email address" autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" required minlength="8" placeholder="Enter your desired username (min. 8 characters)" autocomplete="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required minlength="8" placeholder="Enter your password (min. 8 characters)" autocomplete="new-password">
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required minlength="8" placeholder="Confirm your password" autocomplete="new-password">
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+                <p>Already have an account? <a href="login.html">Login here</a>.</p>
+    </div>
+    <script>
+        function signUp() {
+            const fullName = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            // Save user credentials in localStorage
+            const user = {
+                fullName,
+                email,
+                username,
+                password
+            };
+
+            localStorage.setItem('user_' + username, JSON.stringify(user));
+            console.log('User signed up:', user);  // Debugging line
+            alert('Sign up successful! You can now log in.');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

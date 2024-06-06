@@ -1,0 +1,315 @@
+/* Custom Styles */
+/* Custom Styles */
+/* Custom Styles */
+html, body {
+    height: 300%;
+    width: 100%;
+    padding: 0;
+    margin-left: 0px;
+}
+
+body {
+    background: 
+        linear-gradient(rgba(239, 232, 232, 0.5), rgba(246, 242, 242, 0.5)), /* Adjust the gradient to control lightening effect */
+        url('https://img.pikbest.com/wp/202344/vanilla-ice-close-up-view-of-cream-s-smooth-texture-surface_9927597.jpg!sw800') center/cover no-repeat; /* Replace 'your-background-image.jpg' with the path to your background image */
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+header {
+    padding: 20px 0;
+    border-bottom: 2px solid #e0c3a8; /* Light brown */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0; /* Remove padding to avoid extra space */
+}
+h1 {
+    font-size: 2.5rem;
+    color: #6e4840; /* Brown */
+    text-align: left !important; /* Align the heading to the left */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #6e4840; /* Brown */
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #d09683; /* Lighter peach */
+}
+
+
+#about {
+    background-color: #d8d6d6; /* Light gray background */
+    padding: 100px ;
+    text-align: center;
+    color: #5e352d; /* Brown */
+}
+#about h2{
+    font-size: 2.5rem;
+    color: #6e4840; /* Brown */
+}
+
+#about .description {
+    font-size: 1rem;
+    color: #461515; /* Brown */
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+
+footer {
+    padding: 20px 0;
+    border-top: 2px solid #e0c3a8; /* Light brown */
+}
+
+footer p {
+    margin: 0;
+    color: #6e4840; /* Brown */
+    text-align: center;
+}
+/* Custom Styles */
+#welcome {
+    height: 450px;
+    padding: 100px 0;
+    text-align: center;
+    background-image: url('https://i.pinimg.com/564x/45/40/6d/45406d0ab64628fc6c908a1a020759a0.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-top: px;
+}
+
+#welcome h2 {
+    margin-top: 75px;
+    font-size: 2.5rem;
+    color: rgb(255, 255, 255); /* Text color */
+    -webkit-text-stroke: 0.1px rgb(237, 213, 213); /* Text outline */
+    text-shadow: 1px 1px 1px rgba(252, 248, 248, 0.96); /* Adjust values as needed */
+}
+
+#welcome .description {
+    font-size: 3 rem;
+    font-weight: bold;
+    color: rgb(250, 245, 245); /* Text color */
+    -webkit-text-stroke: 2 px rgb(216, 171, 171); /* Text outline */
+    text-shadow: 1px 1px 1px rgb(19, 18, 18); /* Adjust values as needed */
+    margin-bottom: 20px;
+}
+
+#welcome .sub-description {
+    font-size: 0.5 rem;
+    font-weight: bold;
+    color: rgb(250, 245, 245); /* Text color */
+    -webkit-text-stroke: 2 px rgb(8, 7, 7); /* Text outline */
+    text-shadow: 1px 1px 1px rgb(19, 18, 18); /* Adjust values as needed */
+    margin-bottom: 30px;
+    margin-top: -2px;
+}
+
+#welcome .btn {
+    background-color: #b67964; /* Lighter peach */
+    color: #fff; /* White */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+#welcome .btn:hover {
+    background-color: #6e4840; /* Brown */
+}
+/* Custom Styles */
+#services {
+    margin-left: -700px;
+    margin-right: 2px;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.service {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 50px;
+    margin-top: -10px;
+
+}
+
+.service-content {
+    position: relative;
+}
+
+.service img {
+    width: 750px;
+    height: 480px;
+   border-radius: 5px;
+    cursor: pointer;
+    margin-left: 90px;
+    margin-top: -5px;
+
+}
+
+.overlay-text {
+    width: 700px;
+    height: 270px;
+    position: absolute;
+    top: 50%;
+    left: 140%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.45); /* Background color for the text overlay */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.overlay-text h2 {
+    margin-top: 25px;
+    font-size: 2.5rem;
+    font-family: cursive;
+    color: #3b1f15;  /* Brown */
+}
+
+.overlay-text p {
+    font-size: 1.1rem;
+    color: #572f27; /* Brown */
+    margin-top: 50px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/*1*/
+
+#services1 {
+    margin-right: 2px;
+    padding: 100px 0;
+    text-align: center;
+    margin-top: -150px;
+
+}
+
+.service1 {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+.service-content1 {
+    position: relative;
+}
+
+.service1 img {
+    width: 570px;
+    height: 570px;
+   border-radius: 5px;
+    cursor: pointer;
+    margin-left: 800px;
+}
+
+.overlay-text1 {
+    width: 800px;
+    height: 270px;
+    position: absolute;
+    top: 50%;
+    right: 9.5%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.45); /* Background color for the text overlay */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.overlay-text1 h2 {
+    margin-top: 25px;
+    font-size: 2.5rem;
+    font-family: cursive;
+    color: #3b1f15;  /* Brown */
+}
+
+.overlay-text1 p {
+    font-size: 1.1rem;
+    color: #572f27; /* Brown */
+    margin-top: 50px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+
+/*2*/
+
+#services2 {
+    margin-left: -700px;
+    margin-right: 2px;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.service2 {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 50px;
+    margin-top: -190px;
+
+}
+
+.service-content2 {
+    position: relative;
+}
+
+.service2 img {
+    width: 600px;
+    height: 650px;
+   border-radius: 5px;
+    cursor: pointer;
+    margin-left: -30px;
+    margin-top: 1px;
+
+}
+
+.overlay-text2 {
+    width: 800px;
+    height: 270px;
+    position: absolute;
+    top: 50%;
+    left: 170%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.45); /* Background color for the text overlay */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.overlay-text2 h2 {
+    margin-top: 25px;
+    font-size: 2.5rem;
+    font-family: cursive;
+    color: #3b1f15;  /* Brown */
+}
+
+.overlay-text2 p {
+    font-size: 1.1rem;
+    color: #572f27; /* Brown */
+    margin-top: 50px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}

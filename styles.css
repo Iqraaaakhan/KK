@@ -1,0 +1,436 @@
+/* Custom Styles */
+.navbar {
+    padding: 10px 0;
+    border-top: 0.1rem solid #e4d9cf; /* Light brown */
+    border-bottom: 0.1rem solid #e4d9cf; /* Light brown */
+    background: 
+        linear-gradient(rgba(239, 232, 232, 0.5), rgba(246, 242, 242, 0.5)), 
+        url('van.png') center/cover no-repeat;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem; /* Adjust padding to add space between heading and search bar */
+}
+body.home-page {
+    background: linear-gradient(rgba(239, 232, 232, 0.5), rgba(246, 242, 242, 0.5)), 
+                url('van.png') center/cover no-repeat;
+  }
+  
+.navbar-brand h1 {
+    font-size: 2rem;
+    color: #6e4840; /* Brown */
+    margin: 0;
+}
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+}
+
+.nav-label {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+
+}
+
+@media (max-width: 768px) {
+    .nav-label {
+        font-size: 0.65rem;
+    }
+}
+
+.navbar-toggler {
+    margin-left: 0.5rem; /* Add some margin to the left of the toggle button */
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 15px;
+    margin-left: 0.6rem;
+}
+
+.navbar-nav .nav-item:last-child {
+    margin-right: 2rem;
+}
+
+.navbar-nav .nav-link {
+    color: #6e4840; /* Brown */
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffb6c1; /* Light pink */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.search-bar input {
+    width: 200px; /* Update width to 300px */
+    height: 38px;
+    border: 2px solid rgb(101, 100, 100);
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
+.search-bar button {
+    height: 38px;
+    width: auto;
+    font-weight: bold;
+    color: #000; /* Black */
+    border: 2px solid rgb(101, 100, 100);
+    background-color: transparent;
+    padding-bottom: 0.9rem;
+    margin-left: -2px;
+}
+
+.search-bar button:hover {
+    color: #ffb6c1; /* Light pink */
+    background-color: #6e4840; /* Brown */
+    border-color: #6e4840; /* Brown */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-toggler {
+        margin-left: 0; /* Remove margin from toggle button */
+    }
+
+    .navbar-brand h1 {
+        font-size: 1.5rem;
+    }
+
+    .search-bar input {
+        width: 200px;
+        padding: 0.5rem;
+    }
+
+    .search-bar button {
+        width: auto;
+        padding: 5px 8px;
+    }
+
+    .navbar .container {
+        flex-direction: row; /* Change flex direction to row */
+        justify-content: space-between; /* Align items to the start and end */
+        align-items: center;
+    }
+}
+.welcome-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* Full viewport height */
+    background: url('2cakes.png') center/cover no-repeat; /* Update with your image URL */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Text color */
+    text-align: center;
+    padding: 20px;
+}
+
+
+.welcome-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Overlay for better text visibility */
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 1; /* Ensure content is above overlay */
+}
+
+.welcome-content h1 {
+    font-size: 3rem; /* Adjust font size as needed */
+    margin-bottom: 4rem;
+}
+
+.welcome-content p {
+    font-size: 1.5rem; /* Adjust font size as needed */
+    margin-bottom: 20px;
+}
+
+.welcome-content .btn {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #fff; /* Button text color */
+    background-color: #6e4840; /* Button background color */
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.welcome-content .btn:hover {
+    background-color: #ffb6c1; /* Button hover color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    welcome-section {
+        background-size: contain; /* Ensure the background image covers the entire section */
+        background-position: center; /* Center the background image */
+    }
+    .welcome-content h1 {
+        font-size: 2rem;
+    }
+
+    .welcome-content p {
+        font-size: 1rem;
+    }
+
+    .welcome-content .btn {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+/* Services Section */
+#services .container {
+    width: 120rem; /* Full width minus 2rem for padding on both sides */
+    margin: 0 auto; /* Center align the container */
+    padding: 0 1rem; /* 1rem padding on both sides */
+}
+
+#services .card {
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 2rem; /* Add space between cards */
+    margin: 0.5rem; /* Margin around each card */
+}
+
+#services .card:hover {
+    transform: scale(1.05);
+}
+
+#services .card-img-top {
+    object-fit: cover; /* Ensure the image covers the entire card top */
+    height: 475px; /* Maintain a consistent height for the images */
+}
+
+#services .card-title {
+    font-size: 1.7rem;
+    color: #2b0e09; /* Brown */
+    font-family: cursive;
+    font-weight: bold;
+    
+}
+#services .card-text {
+    color: #070000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #services .container {
+        width: calc(100% - 2rem); /* Adjust container width for smaller screens */
+    }
+    #services .card-img-top {
+        height: auto; /* Allow image height to adjust for smaller screens */
+    }
+}
+
+/* Adjust card width */
+#services .col-lg-4, 
+#services .col-md-6 {
+    max-width: calc(33.3333% - 1rem); /* Increase card width for larger screens */
+}
+
+@media (max-width: 992px) {
+    #services .col-lg-4 {
+        max-width: calc(50% - 1rem); /* Adjust card width for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    #services .col-md-6 {
+        max-width: calc(100% - 1rem); /* Adjust card width for small screens */
+    }
+}
+/* Custom Styles for Features Section */
+
+#features {
+    padding: 3rem 0; /* Adjust padding for spacing */
+    margin-top: 5rem; /* Increase top margin for spacing */
+}
+
+.feature-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    color: #6e4840; /* Match the button color */
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #666;
+}
+
+#features .section-title {
+    font-size: 3rem;
+    color: #603d37;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: cursive;
+    margin-top: -4.7rem;
+    margin-bottom: 4.2rem;
+}
+
+/* Responsive adjustments for Features Section */
+@media (max-width: 768px) {
+    .feature-icon {
+        font-size: 2.5rem; /* Adjust icon size for smaller screens */
+    }
+
+    .card-title {
+        font-size: 1.2rem; /* Adjust title font size for smaller screens */
+    }
+
+    .card-text {
+        font-size: 1rem; /* Adjust text font size for smaller screens */
+    }
+
+    #features {
+        padding: 2rem 0; /* Adjust padding for smaller screens */
+    }
+}
+
+
+
+/* Custom Styles for About Section */
+
+#about {
+    padding: 5rem 0; /* Adjust padding for spacing */
+}
+
+#about .container {
+
+    max-width: 1200px; /* Set maximum width for content */
+    margin-top: 1rem; /* Center align the content */
+    padding: 0 1rem; /* Padding on the sides */
+}
+#about .row {
+    align-items: center; /* Align items vertically */
+}
+
+#about img {
+    border-radius: 10px; /* Rounded corners for the image */
+    max-width: 100%; /* Ensure image doesn't overflow container */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    height: 27rem;
+    margin-left: -0.5rem;
+    margin-top: 2rem;
+    margin-right: 10rem;
+}
+
+#about .about-content {
+    padding: 2rem; /* Padding for content */
+}
+#about h1{
+    font-size: 3rem; /* Larger font size */
+    color: #603d37;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#about h2 {
+    font-size: 2rem; /* Larger font size */
+    color: #603d37;
+    font-family: cursiv;
+    text-transform: uppercas; /* Uppercase text */
+    margin-bottom: 1.5rem; /* Spacing below heading */
+}
+
+#about p {
+    font-size: 1.2rem; /* Medium font size */
+    color: #333; /* Dark gray color */
+    margin-bottom: 1.5rem; /* Spacing between paragraphs */
+    line-height: 1.6; /* Increase line height for better readability */
+}
+
+#about .btn-primary {
+    background-color: #6e4840; /* Brown background color */
+    border-color: #6e4840; /* Brown border color */
+    color: #fff; /* White text color */
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Smooth transition */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 1px; /* Add letter spacing */
+}
+
+#about .btn-primary:hover {
+    background-color: #4a2d2d; /* Darker brown on hover */
+    border-color: #4a2d2d; /* Darker brown border on hover */
+}
+
+/* Custom Styles for Contact Section */
+
+#contact{
+}
+#contact .container {
+    width: calc(100% - 2rem); /* Full width minus 2rem for padding on both sides */
+    margin: 0 auto; /* Center align the container */
+    padding: 0 1rem; /* 1rem padding on both sides */
+}
+
+#contact h1 {
+    font-size: 2rem;
+    color: #603d37;
+    font-family: cursive;
+    font-weight: bold;
+}
+
+#contact .form-control {
+    border-radius: 5px;
+}
+
+#contact .btn-primary {
+    background-color: #2b0e09; /* Brown */
+    border-color: #2b0e09; /* Brown */
+}
+
+#contact .btn-primary:hover {
+    background-color: #4a2d2d; /* Darker Brown */
+    border-color: #4a2d2d; /* Darker Brown */
+}
+
+/* Responsive adjustments for Contact Section */
+@media (max-width: 768px) {
+    #contact .container {
+        width: calc(100% - 2rem); /* Adjust container width for smaller screens */
+    }
+    #contact h1 {
+        font-size: 1.5rem;
+    }
+}
+  

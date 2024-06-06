@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guilt-Free Goodies</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Custom CSS linked last -->
+
+
+    <style>
+        /* Custom Styles for Guilt-Free Goodies */
+        h2 {
+            font-style: italic;
+            color: #54332d;
+            font-family: cursive;
+            text-align: center;
+            margin: 0;
+        }
+
+        body {
+            background: linear-gradient(rgba(239, 232, 232, 0.5), rgba(246, 242, 242, 0.5)),
+            url('van.png') center/cover no-repeat;
+        }
+
+        .product-img {
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .product-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 8px 16px rgba(13, 13, 13, 0.2), 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .product-seller {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            color: #6e4840;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            color: #ffc107;
+        }
+
+        .btn-view-details, .btn-add-to-wishlist {
+            background-color: #6e4840;
+            border: none;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-add-to-cart {
+            background-color: #6e4840;
+            border: none;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            width: 15rem;
+        }
+
+        .btn-view-details:hover, .btn-add-to-cart:hover, .btn-add-to-wishlist:hover {
+            background-color: #ffb6c1;
+            color: #6e4840;
+        }
+
+        /* Additional Styles */
+        .container {
+            padding-top: 3rem; /* Add some top padding */
+        }
+
+        .navbar-brand {
+            font-size: 2rem; /* Increase font size for brand */
+            font-style: italic;
+            color: #382521;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .product-img {
+                height: 400px; /* Adjust image height for smaller screens */
+            }
+
+            .product-title {
+                font-size: 1.2rem; /* Adjust font size for product title */
+            }
+
+            .product-price {
+                font-size: 1rem; /* Adjust font size for product price */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .col-sm-12 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    #notification {
+    display: none;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1000;
+    background: #fff;
+}
+    </style>
+</head>
+<body>
+
+    <!-- Notification Container -->
+<div id="notification-container">
+    <div id="notification">Item added to cart!</div>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container d-flex justify-content-center">
+        <h2>Guilt-Free Goodies - Satisfy Every Craving Guilt-Free!</h2>
+    </div>
+</nav>
+
+<!-- Product Showcase -->
+<div class="container">
+    <div class="row">
+        <!-- Product Item 1 -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="gluten-free-brownies">
+            <div class="card h-100 product-card">
+                <img src="https://i.pinimg.com/564x/8d/29/98/8d29981eb501880d1cdbd1fe17301f1a.jpg" class="card-img-top product-img" alt="Gluten-Free Brownies">
+                <div class="card-body product-details">
+                    <h5 class="card-title product-title">Gluten-Free Brownies</h5>
+                    <p class="card-text product-seller">Seller: Healthy Bites</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="card-text product-price">₹300</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-1">4.5</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-to-wishlist" data-id="gluten-free-brownies" data-name="Gluten-Free Brownies" data-price="300" data-image="https://i.pinimg.com/564x/8d/29/98/8d29981eb501880d1cdbd1fe17301f1a.jpg"><i class="fas fa-heart"></i></button>
+                    <button class="btn btn-add-to-cart" data-id="gluten-free-brownies" data-name="Gluten-Free Brownies" data-price="300" data-image="https://i.pinimg.com/564x/8d/29/98/8d29981eb501880d1cdbd1fe17301f1a.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Product Item 2 -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="organic-fruit-bars">
+            <div class="card h-100 product-card">
+                <img src="https://i.pinimg.com/564x/53/90/91/539091b63bf413e89e6e8071730130b2.jpg" class="card-img-top product-img" alt="Organic Fruit Bars">
+                <div class="card-body product-details">
+                    <h5 class="card-title product-title">Organic Fruit Bars</h5>
+                    <p class="card-text product-seller">Seller: Nature's Candy</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="card-text product-price">₹450</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="ml-1">4.9</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-to-wishlist" data-id="organic-fruit-bars" data-name="Organic Fruit Bars" data-price="450" data-image="https://i.pinimg.com/564x/53/90/91/539091b63bf413e89e6e8071730130b2.jpg"><i class="fas fa-heart"></i></button>
+                    <button class="btn btn-add-to-cart" data-id="organic-fruit-bars" data-name="Organic Fruit Bars" data-price="450" data-image="https://i.pinimg.com/564x/53/90/91/539091b63bf413e89e6e8071730130b2.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Item 3 -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="egg-free-cupcakes">
+            <div class="card h-100 product-card">
+                <img src="ck.jpeg" class="card-img-top product-img" alt="Egg-Free Cupcakes">
+                <div class="card-body product-details">
+                    <h5 class="card-title product-title">Egg-Free Cupcakes</h5>
+                    <p class="card-text product-seller">Seller: Vegan Delights</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="card-text product-price">₹500</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="ml-1">4.0</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-to-wishlist" data-id="egg-free-cupcakes" data-name="Egg-Free Cupcakes" data-price="500" data-image="ck.jpeg"><i class="fas fa-heart"></i></button>
+                    <button class="btn btn-add-to-cart" data-id="egg-free-cupcakes" data-name="Egg-Free Cupcakes" data-price="500" data-image="ck.jpeg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+<!-- Product Item 4 -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="sugar-free-cookies">
+    <div class="card h-100 product-card">
+        <img src="https://i.pinimg.com/564x/a3/69/cf/a369cf6cbe372349942ccbfa9d5ea2c5.jpg" class="card-img-top product-img" alt="Sugar-Free Cookies">
+        <div class="card-body product-details">
+            <h5 class="card-title product-title">Sugar-Free Cookies</h5>
+            <p class="card-text product-seller">Seller: Sweet Alternatives</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text product-price">₹350</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span class="ml-1">4.3</span>
+                </div>
+            </div>
+            <button class="btn btn-add-to-wishlist" data-id="sugar-free-cookies" data-name="Sugar-Free Cookies" data-price="350" data-image="https://i.pinimg.com/564x/a3/69/cf/a369cf6cbe372349942ccbfa9d5ea2c5.jpg"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-add-to-cart" data-id="sugar-free-cookies" data-name="Sugar-Free Cookies" data-price="350" data-image="https://i.pinimg.com/564x/a3/69/cf/a369cf6cbe372349942ccbfa9d5ea2c5.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+</div>
+<!-- Product Item 5 -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="low-sugar-granola-bars">
+    <div class="card h-100 product-card">
+        <img src="https://i.pinimg.com/564x/3a/fc/89/3afc89707ba72928cf8daf249037f032.jpg" class="card-img-top product-img" alt="Low-Sugar Granola Bars">
+        <div class="card-body product-details">
+            <h5 class="card-title product-title">Low-Sugar Granola Bars</h5>
+            <p class="card-text product-seller">Seller: Fitness Fuel</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text product-price">₹250</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span class="ml-1">4.8</span>
+                </div>
+            </div>
+            <button class="btn btn-add-to-wishlist" data-id="low-sugar-granola-bars" data-name="Low-Sugar Granola Bars" data-price="250" data-image="https://i.pinimg.com/564x/3a/fc/89/3afc89707ba72928cf8daf249037f032.jpg"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-add-to-cart" data-id="low-sugar-granola-bars" data-name="Low-Sugar Granola Bars" data-price="250" data-image="https://i.pinimg.com/564x/3a/fc/89/3afc89707ba72928cf8daf249037f032.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+</div>
+<!-- Product Item 6 -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="dairy-free-ice-cream">
+    <div class="card h-100 product-card">
+        <img src="https://rumkisgoldenspoon.com/wp-content/uploads/2022/05/Gulkand-icecream.jpg" class="card-img-top product-img" alt="Dairy-Free Ice Cream">
+        <div class="card-body product-details">
+            <h5 class="card-title product-title">Dairy-Free Ice Cream</h5>
+            <p class="card-text product-seller">Seller: Cool Treats</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text product-price">₹200</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span class="ml-1">4.7</span>
+                </div>
+            </div>
+            <button class="btn btn-add-to-wishlist" data-id="dairy-free-ice-cream" data-name="Dairy-Free Ice Cream" data-price="200" data-image="https://rumkisgoldenspoon.com/wp-content/uploads/2022/05/Gulkand-icecream.jpg"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-add-to-cart" data-id="dairy-free-ice-cream" data-name="Dairy-Free Ice Cream" data-price="200" data-image="https://rumkisgoldenspoon.com/wp-content/uploads/2022/05/Gulkand-icecream.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+</div>
+<!-- Product Item 7 -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="choco-dipped-oranges">
+    <div class="card h-100 product-card">
+        <img src="https://i.pinimg.com/564x/19/62/92/1962923285da80b0f2cc89762c0498eb.jpg" class="card-img-top product-img" alt="Choco Dipped Oranges">
+        <div class="card-body product-details">
+            <h5 class="card-title product-title">Choco Dipped Oranges</h5>
+            <p class="card-text product-seller">Seller: Citrus Bliss</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text product-price">₹600</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span class="ml-1">4.2</span>
+                </div>
+            </div>
+            <button class="btn btn-add-to-wishlist" data-id="choco-dipped-oranges" data-name="Choco Dipped Oranges" data-price="600" data-image="https://i.pinimg.com/564x/19/62/92/1962923285da80b0f2cc89762c0498eb.jpg"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-add-to-cart" data-id="choco-dipped-oranges" data-name="Choco Dipped Oranges" data-price="600" data-image="https://i.pinimg.com/564x/19/62/92/1962923285da80b0f2cc89762c0498eb.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+</div>
+<!-- Product Item 8 -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="vegan-cheesecake">
+    <div class="card h-100 product-card">
+        <img src="https://i.pinimg.com/564x/30/00/66/30006631d08d2375edd55ed3b8bd5c15.jpg" class="card-img-top product-img" alt="Vegan Cheesecake">
+        <div class="card-body product-details">
+            <h5 class="card-title product-title">Vegan Cheesecake</h5>
+            <p class="card-text product-seller">Seller: Plant-Based Sweets</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text product-price">₹700</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span class="ml-1">4.6</span>
+                </div>
+            </div>
+            <button class="btn btn-add-to-wishlist" data-id="vegan-cheesecake" data-name="Vegan Cheesecake" data-price="700" data-image="https://i.pinimg.com/564x/30/00/66/30006631d08d2375edd55ed3b8bd5c15.jpg"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-add-to-cart" data-id="vegan-cheesecake" data-name="Vegan Cheesecake" data-price="700" data-image="https://i.pinimg.com/564x/30/00/66/30006631d08d2375edd55ed3b8bd5c15.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+</div>
+<!-- Product Item 9 -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="fat-free-muffins">
+    <div class="card h-100 product-card">
+        <img src="https://i.pinimg.com/564x/7d/81/e5/7d81e5e848d351302ccf09ca3f652048.jpg" class="card-img-top product-img" alt="Fat-Free Muffins">
+        <div class="card-body product-details">
+            <h5 class="card-title product-title">Fat-Free Muffins</h5>
+            <p class="card-text product-seller">Seller: Lean Bakes</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text product-price">₹350</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span class="ml-1">4.4</span>
+                </div>
+            </div>
+            <button class="btn btn-add-to-wishlist" data-id="fat-free-muffins" data-name="Fat-Free Muffins" data-price="350" data-image="https://i.pinimg.com/564x/7d/81/e5/7d81e5e848d351302ccf09ca3f652048.jpg"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-add-to-cart" data-id="fat-free-muffins" data-name="Fat-Free Muffins" data-price="350" data-image="https://i.pinimg.com/564x/7d/81/e5/7d81e5e848d351302ccf09ca3f652048.jpg"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const notification = document.getElementById('notification');
+        
+        // Function to display notification
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 2000); // Hide the notification after 2 seconds
+        }
+
+        function addToCart(productId, productName, productPrice, productImage) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const product = { id: productId, name: productName, price: productPrice, image: productImage };
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            showNotification(`${productName} added to cart!`);
+        }
+
+        function addToWishlist(productId, productName, productPrice, productImage) {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const product = { id: productId, name: productName, price: productPrice, image: productImage };
+            wishlist.push(product);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            showNotification(`${productName} added to wishlist!`);
+        }
+
+        document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.stopPropagation();
+                const productId = this.getAttribute('data-id');
+                const productName = this.getAttribute('data-name');
+                const productPrice = parseFloat(this.getAttribute('data-price'));
+                const productImage = this.getAttribute('data-image');
+                addToCart(productId, productName, productPrice, productImage);
+            });
+        });
+
+        document.querySelectorAll('.btn-add-to-wishlist').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.stopPropagation();
+                const productId = this.getAttribute('data-id');
+                const productName = this.getAttribute('data-name');
+                const productPrice = parseFloat(this.getAttribute('data-price'));
+                const productImage = this.getAttribute('data-image');
+                addToWishlist(productId, productName, productPrice, productImage);
+            });
+        });
+    });
+</script>
+
+<script src="script.js"></script>
+<!-- Bootstrap and FontAwesome JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            height: 150rem;
+            background: linear-gradient(#efe8e880, rgba(246, 242, 242, 0.5)), 
+                url('van.png') center/cover no-repeat;
+        }
+        .wishlist-container {
+            padding: 2rem;
+            border: 0.rem solid rgb(182, 151, 151);
+            border-radius: 0%;
+            width: 100%;
+            height: auto;
+            margin-top: 0.3rem;
+        }
+        .wishlist-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 2px solid #ccc;
+        }
+        .wishlist-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+        .wishlist-item-details {
+            flex-grow: 1;
+            margin-left: 1rem;
+        }
+        .wishlist-item-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .wishlist-item-price {
+            color: #6e4840;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .btn-remove {
+            background-color: #9e5e52;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-remove:hover {
+            background-color: #eeafbc;
+            border-color: #2e1713;
+        }
+        #wishlist-total {
+            font-size: 1.5rem;
+            text-align: right;
+            margin-top: 2rem;
+        }
+        .badge {
+            font-size: 1.5rem;
+            border-radius: 50%;
+            padding: 3px 8px;
+            background-color: #9e5e52;
+            color: white;
+            position: absolute;
+            margin-top: 0.5rem;
+            margin-left: -0.7rem;
+            transform: translate(50%, -50%);
+        }
+        .btn-continue-shopping { 
+            margin-top: 5rem;
+            width: 100%;
+            background-color: #9e5e52;
+            border-color: #9e5e52;
+        }
+        .btn-continue-shopping:hover {
+            background-color: #eeafbc;
+            border-color: #9e5e52;
+        }
+        @media (min-width: 576px) {
+            .btn-continue-shopping {
+                width: auto;
+                margin-top: 0;
+            }
+            .wishlist-container {
+                margin-left: 2rem; /* Move the container to the right */
+            }
+        }
+        @media (max-width: 575px) {
+            .wishlist-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .btn-remove {
+                margin-top: 1rem;
+            }
+        }
+        #logo {
+            margin-left: 2rem;
+            width: 5rem;
+            height: 4rem;
+            margin-bottom: 0.5rem;
+        }
+        #title {
+            margin-left: 0.3rem;
+            color: rgb(56, 15, 24);
+            font-weight: bold;
+            font-size: 2rem;
+        }
+        h1 {
+            margin-bottom: 1.2rem;
+        
+        }
+        #wishlist-part {
+            margin-left: 0.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 90rem;">
+        <a class="navbar-brand" href="#">
+            <img src="KKsmall.jpeg" alt="Your Brand Logo" id="logo">
+            <span class="navbar-text" id="title">Kitchen Konnections</span>
+        </a>
+    </nav>
+    
+    <div class="container wishlist-container">
+        <h1 style="color: rgb(56, 15, 24); font-family: cursive">My Wishlist</h1>
+        <div id="wishlist-part">
+            <i class="fas fa-heart" id="wishlist" style="font-size: 2rem; color: #4f231c;"></i>
+            <span class="badge" id="wishlist-item-count" style="font-family: 'Times New Roman', Times, serif;">0</span>
+        </div>
+        
+        <!-- Your existing wishlist items -->
+        <div id="wishlist-items"></div>
+        <a href="index.html" class="btn btn-primary btn-continue-shopping" style=" margin-top: 1.5rem;">Continue Shopping</a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const wishlistItemsContainer = document.getElementById('wishlist-items');
+            const wishlistItemCount = document.getElementById('wishlist-item-count');
+
+            // Function to update the count of unique items in the wishlist
+            function updateWishlistItemCount() {
+                const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+                const uniqueItemIds = new Set(wishlist.map(item => item.id)); // Use a Set to store unique IDs
+                wishlistItemCount.textContent = uniqueItemIds.size || 0; // Display the size of the Set (number of unique items) or 0 if empty
+            }
+
+            // Function to load the wishlist
+            function loadWishlist() {
+                let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+                wishlistItemsContainer.innerHTML = '';
+
+                wishlist.forEach(product => {
+                    // Check if the product has all required properties
+                    if (product.id && product.name && product.price && product.image) {
+                        const item = document.createElement('div');
+                        item.classList.add('wishlist-item');
+                        item.innerHTML = `
+                            <img src="${product.image}" alt="${product.name}">
+                            <div class="wishlist-item-details">
+                                <h5 class="wishlist-item-title">${product.name}</h5>
+                                <p class="wishlist-item-price">₹${product.price}</p>
+                            </div>
+                            <button class="btn btn-remove" data-id="${product.id}">Remove</button>`;
+                        wishlistItemsContainer.appendChild(item);
+                    }
+                });
+
+                // Update the wishlist item count
+                updateWishlistItemCount();
+            }
+
+            // Load the wishlist when the page is loaded
+            loadWishlist();
+
+            // Add event listeners to remove buttons
+            wishlistItemsContainer.addEventListener('click', function (event) {
+                if (event.target && event.target.classList.contains('btn-remove')) {
+                    const productId = event.target.getAttribute('data-id');
+                    removeFromWishlist(productId);
+                }
+            });
+
+// Function to remove item from wishlist
+function removeFromWishlist(productId) {
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    // Filter out the product with the specified ID
+    wishlist = wishlist.filter(product => product.id !== productId);
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    loadWishlist();
+}
+});
+</script>
+<script src="script.js"></script>
+</body>
+</html>
+
